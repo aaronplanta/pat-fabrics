@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     },
 
     basePath: isProd ? '/pat-fabrics' : '',
+    assetPrefix: isProd ? '/pat-fabrics/' : '',
 
     turbopack: {
         rules: {
