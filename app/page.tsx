@@ -28,10 +28,12 @@ export default function Home() {
         },
     ];
 
+    const basePath = process.env.NODE_ENV === 'production' ? '/ron-fabrics' : '';
+
     return (
         <div>
             {/* Hero Section */}
-            <section className="bg-[url('/images/bg.png')] bg-cover bg-center bg-stone-900/70 bg-blend-overlay text-stone-100 py-24 px-6 text-center">
+            <section className="bg-cover bg-center bg-stone-900/70 bg-blend-overlay text-stone-100 py-24 px-6 text-center" style={{ backgroundImage: `url('${basePath}/images/bg.png')` }}>
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                         Elevate Your Brand with Premium Fabrics
@@ -80,7 +82,7 @@ export default function Home() {
             </section>
 
             {/* Why Choose Us */}
-            <section className="bg-[url('/images/bg2.png')] bg-cover bg-center bg-stone-900/70 bg-blend-overlay py-20 px-6">
+            <section className="bg-cover bg-center bg-stone-900/70 bg-blend-overlay py-20 px-6" style={{ backgroundImage: `url('${basePath}/images/bg2.png')` }}>
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-3xl text-white font-bold mb-8 text-center">Why Top Brands Source From Us</h2>
                     <div className="space-y-6">
