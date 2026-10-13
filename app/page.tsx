@@ -6,25 +6,25 @@ export default function Home() {
             title: "Fine Merino Wool",
             use: "Premium base layers, lightweight sweaters, activewear.",
             trait: "Ultra-soft, breathable, and moisture-wicking.",
-            image: "/images/merino.png"
+            image: "images/merino.png"
         },
         {
             title: "Worsted Wool",
             use: "Tailored suits, blazers, high-end trousers.",
             trait: "Smooth, durable finish with excellent drape.",
-            image: "/images/worsted.png"
+            image: "images/worsted.png"
         },
         {
             title: "Heavy Outerwear",
             use: "Overcoats, peacoats, winter jackets.",
             trait: "Thick, highly insulating, and weather-resistant.",
-            image: "/images/outwear.png"
+            image: "images/outwear.png"
         },
         {
             title: "Textured Tweed",
             use: "Heritage jackets, skirts, statement pieces.",
             trait: "Rugged, distinct woven patterns, highly durable.",
-            image: "/images/tweed.png"
+            image: "images/tweed.png"
         },
     ];
 
