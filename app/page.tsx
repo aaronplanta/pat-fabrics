@@ -28,7 +28,7 @@ export default function Home() {
         },
     ];
 
-    const basePath = process.env.NODE_ENV === 'production' ? '/ron-fabrics' : '';
+    const basePath = process.env.NODE_ENV === 'production' ? '/pat-fabrics' : '';
 
     return (
         <div>
