@@ -1,4 +1,4 @@
-# Ron Fabrics B2B Website
+# PAT Fabrics B2B Website
 
 A responsive, static B2B platform designed to showcase premium sheep wool collections and generate wholesale leads from clothing brands in Metro Manila. 
 
@@ -18,7 +18,7 @@ A responsive, static B2B platform designed to showcase premium sheep wool collec
 
 First, clone the repository and navigate into the project directory:
 ```bash
-cd ron-fabrics
+cd pat-fabrics
 ```
 
 Install the dependencies:
