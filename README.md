@@ -1,6 +1,6 @@
 # PAT Fabrics B2B Website
 
-A responsive, static B2B platform designed to showcase premium sheep wool collections and generate wholesale leads from clothing brands in Metro Manila. 
+A responsive, static Next.js B2B website platform designed to showcase premium fabric collections and generate wholesale leads from clothing brands in Metro Manila.
 
 ## Tech Stack
 * **Framework:** Next.js (App Router)
