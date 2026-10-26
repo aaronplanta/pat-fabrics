@@ -1,4 +1,4 @@
-# PAT Fabrics B2B Website
+# PAT Fabrics
 
 This is a practice project built specifically to learn and practice how to make a responsive website.
 
