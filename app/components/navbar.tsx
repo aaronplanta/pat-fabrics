@@ -1,70 +1,29 @@
-"use client";
-
-import { useState } from "react";
+﻿"use client";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Arrow, ThreadMark } from "./brand";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <header className="sticky top-0 z-50 w-full text-stone-50">
-            {/* Top Bar (Now its own separate block so the blurs don't conflict) */}
-            <div className="bg-stone-900/80 backdrop-blur-md shadow-sm relative z-20">
-                <div className="max-w-6xl mx-auto px-6 py-4">
-                    <div className="flex justify-between items-center">
-                        {/* Logo */}
-                        <Link
-                            href="/"
-                            className="text-2xl font-bold tracking-tight"
-                            onClick={() => setIsOpen(false)} // Close menu if clicking logo
-                        >
-                            PAT FABRICS
-                        </Link>
-
-                        {/* Desktop Nav (Hidden on Mobile) */}
-                        <nav className="hidden md:flex space-x-6 text-sm font-medium">
-                            <Link href="/" className="hover:text-stone-300 transition">Home</Link>
-                            <Link href="/contact" className="hover:text-stone-300 transition">About & Contact</Link>
-                        </nav>
-
-                        {/* Mobile Burger Button (Hidden on Desktop) */}
-                        <button
-                            className="md:hidden p-2 text-stone-300 hover:text-white transition"
-                            onClick={() => setIsOpen(!isOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            {/* SVG Icon changes from Burger to X based on isOpen state */}
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                {isOpen ? (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                                )}
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Mobile Nav Dropdown (Now a sibling to the top bar) */}
-            {isOpen && (
-                <nav className="md:hidden absolute top-full left-0 w-full bg-stone-900/80 backdrop-blur-md px-6 py-6 flex flex-col space-y-4 border-t border-stone-700/50 text-sm font-medium shadow-xl z-10">
-                    <Link
-                        href="/"
-                        className="hover:text-stone-300 transition block"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className="hover:text-stone-300 transition block"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        About & Contact
-                    </Link>
-                </nav>
-            )}
-        </header>
-    );
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape" && isOpen) { setIsOpen(false); toggleRef.current?.focus(); }
+    }
+    function closeOnDesktop() { if (window.innerWidth > 760) setIsOpen(false); }
+    window.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnDesktop);
+    return () => { window.removeEventListener("keydown", closeOnEscape); window.removeEventListener("resize", closeOnDesktop); };
+  }, [isOpen]);
+  return <>
+    <div className="announcement">Exceptional wool. Endless possibilities. <span>Thoughtfully supplied in Metro Manila.</span></div>
+    <header className="site-header"><div className="shell nav-inner">
+      <Link href="/" className="brand" onClick={() => setIsOpen(false)} aria-label="PAT Fabrics home"><ThreadMark /><span>PAT <span className="brand-light">FABRICS</span><small>THE FOUNDATION OF FINE CLOTHING</small></span></Link>
+      <nav className="desktop-nav" aria-label="Main navigation"><Link href="/#collections">Our collections</Link><Link href="/#our-story">Our story</Link><Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>About & contact</Link></nav>
+      <Link href="/contact#contact-details" className="nav-cta">Let’s create together <Arrow /></Link>
+      <button ref={toggleRef} className="menu-toggle" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-controls={isOpen ? "mobile-navigation" : undefined} aria-label={isOpen ? "Close navigation" : "Open navigation"}><span className={isOpen ? "menu-lines is-open" : "menu-lines"}><span /><span /></span></button>
+    </div>{isOpen && <nav className="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation"><Link href="/#collections" onClick={() => setIsOpen(false)}>Our collections <Arrow /></Link><Link href="/#our-story" onClick={() => setIsOpen(false)}>Our story <Arrow /></Link><Link href="/contact" onClick={() => setIsOpen(false)}>About & contact <Arrow /></Link><Link href="/contact#contact-details" onClick={() => setIsOpen(false)}>Request swatches <Arrow /></Link></nav>}</header>
+  </>;
 }

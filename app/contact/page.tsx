@@ -1,66 +1,19 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Arrow, ThreadMark } from "../components/brand";
+export const metadata: Metadata = { title: "About & Contact | PAT Fabrics", description: "Talk to PAT Fabrics in Bel-Air, Makati about wool swatches, wholesale orders, and your next collection." };
+const basePath = process.env.NODE_ENV === "production" ? "/pat-fabrics" : "";
+const faqs = [
+  { q: "Can I feel the fabric before placing an order?", a: "Absolutely. We encourage you to experience the quality firsthand. Call us to request a swatch book with our current fabric weights, weaves, and colours." },
+  { q: "What is your minimum order quantity?", a: "Our wholesale minimums depend on the fabric you choose. We work with brands of different sizes, so call our team to discuss the right quantities for your production run." },
+  { q: "Do you deliver to manufacturing facilities?", a: "Yes. We coordinate delivery of bulk fabric rolls to tailoring houses and garment manufacturing facilities across Metro Manila and surrounding areas. Contact us to discuss your location and order." },
+];
 export default function Contact() {
-    const faqs = [
-        { q: "Do you provide fabric swatches before we commit to a bulk order?", a: "Yes. We highly encourage brands to feel the quality of our wool firsthand. Call us to request a comprehensive swatch book featuring our current weights, weaves, and color varieties." },
-        { q: "What is your Minimum Order Quantity (MOQ)?", a: "We work with brands of various sizes, but we do have standard wholesale MOQs depending on the specific fabric type. Please call our team to discuss the exact requirements for your production run." },
-        { q: "Can you deliver fabric rolls directly to our manufacturing facility?", a: "Yes. We coordinate the secure delivery of bulk fabric rolls to tailoring houses and garment manufacturing facilities across Metro Manila and surrounding areas." }
-    ];
-
-    return (
-        <div className="max-w-4xl mx-auto px-6 py-16">
-
-            {/* Header */}
-            <div className="text-center mb-16">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Partner with PAT Fabrics</h1>
-                <p className="text-lg text-stone-400 max-w-2xl mx-auto">
-                    From boutique luxury labels to established menswear brands, our wool is woven into some of the finest garments in the industry.
-                </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12 mb-16">
-                {/* About Section */}
-                <div>
-                    <h2 className="text-2xl font-bold mb-4 border-b pb-2 border-stone-200">Who We Are</h2>
-                    <p className="text-stone-400 leading-relaxed">
-                        PAT Fabrics is a specialized textile supplier dedicated entirely to premium sheep wool. We believe that true luxury starts at the thread level. By focusing our expertise on one distinct material, we help clothing brands craft exceptional garments that stand out in a crowded market. Whether you are cutting bespoke suits or scaling a seasonal knitwear line, we provide the raw materials to bring your vision to life.
-                    </p>
-                </div>
-
-                {/* Contact Info */}
-                <div className="bg-stone-900 text-stone-50 p-8 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-bold mb-4 border-b border-stone-700 pb-2">Contact Us</h2>
-                    <p className="mb-6 text-stone-300 text-sm">
-                        Stop guessing from digital photos. Call us directly to discuss your brand&apos;s specific textile needs, request physical swatches, or place a wholesale order.
-                    </p>
-                    <ul className="space-y-4">
-                        <li className="flex flex-col">
-                            <span className="text-stone-400 text-sm uppercase tracking-wider font-semibold">Phone (Call & Viber)</span>
-                            <span className="text-xl font-bold hover:text-stone-300">09322751087</span>
-                        </li>
-                        <li className="flex flex-col">
-                            <span className="text-stone-400 text-sm uppercase tracking-wider font-semibold">Location</span>
-                            <span className="text-lg">Bel-Air, Makati City, Metro Manila</span>
-                        </li>
-                        <li className="flex flex-col">
-                            <span className="text-stone-400 text-sm uppercase tracking-wider font-semibold">Business Hours</span>
-                            <span className="text-lg">Monday – Friday, 8:00 AM to 5:00 PM</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            {/* FAQ Section */}
-            <div>
-                <h2 className="text-2xl font-bold mb-6 border-b pb-2 border-stone-200">Frequently Asked Questions</h2>
-                <div className="space-y-6">
-                    {faqs.map((faq, idx) => (
-                        <div key={idx}>
-                            <h3 className="font-semibold text-lg text-stone-200">{faq.q}</h3>
-                            <p className="text-stone-400 mt-1">{faq.a}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-        </div>
-    );
+  return <>
+    <section className="shell contact-intro"><p className="eyebrow">YOUR VISION. OUR FABRIC.</p><h1>Let’s make<br /><em>something exceptional.</em></h1><p>From a first collection to your next signature piece,<br className="desktop-break" /> we’re here to help you find the right foundation.</p></section>
+    <section className="shell contact-grid" id="contact-details"><div className="about-copy"><p className="eyebrow">A LITTLE ABOUT US</p><h2>Specialists in wool.<br /><em>Partners in your craft.</em></h2><p>PAT Fabrics is a specialised textile supplier dedicated to premium sheep wool. We believe true luxury starts at the thread level, with materials that look beautiful, feel exceptional, and stand the test of time.</p><p>Based in Bel-Air, Makati, we bring quality wool closer to local designers and clothing brands. Whether you’re cutting bespoke suits or building a seasonal knitwear line, we help you find the fabric to bring your vision to life.</p><div className="about-image"><Image src={`${basePath}/images/merino.png`} alt="Naturally textured olive merino wool with soft, flowing folds" fill sizes="(max-width: 760px) 100vw, 45vw" /><span>GOOD THINGS BEGIN WITH GOOD MATERIALS.</span></div></div><div className="contact-panel"><ThreadMark /><p className="eyebrow">LET’S TALK FABRIC</p><h2>A conversation is<br /><em>a beautiful start.</em></h2><p>Tell us what you’re creating. We’ll help with fabric selection, physical swatches, and wholesale enquiries.</p><a href="tel:+639322751087" className="contact-phone">0932 275 1087 <Arrow /></a><span className="contact-phone-label">CALL US · ALSO AVAILABLE ON VIBER</span><div className="contact-detail"><span className="eyebrow">FIND US</span><p>Bel-Air, Makati City<br />Metro Manila, Philippines</p><a className="text-link light-link" href="https://www.google.com/maps/search/?api=1&query=Bel-Air+Makati+Metro+Manila" target="_blank" rel="noopener noreferrer">Explore the neighbourhood <Arrow /></a></div><div className="contact-detail"><span className="eyebrow">BUSINESS HOURS</span><p>Monday – Friday<br />8:00 AM – 5:00 PM</p></div><p className="visit-note">Planning a visit? Give us a call first so we can prepare the fabrics you’d like to see.</p></div></section>
+    <section className="shell section-space faq-section"><div><p className="eyebrow">A FEW GOOD QUESTIONS</p><h2>Before the<br /> <em>first stitch.</em></h2><p>Need to know something else?<br /><a href="tel:+639322751087" className="text-link">Give us a call <Arrow /></a></p></div><div className="faq-list">{faqs.map((faq, index) => <details key={faq.q}><summary><span className="faq-number">0{index + 1}</span><span>{faq.q}</span><span className="faq-plus" aria-hidden="true" /></summary><p>{faq.a}</p></details>)}</div></section>
+    <div className="contact-end shell"><span>Great fabric. A world of possibilities.</span><Link href="/#collections" className="text-link">Explore our collections <Arrow /></Link></div>
+  </>;
 }
